@@ -1,5 +1,8 @@
 import { MetadataRoute } from 'next';
 
+// Required for static export
+export const dynamic = 'force-static';
+
 /**
  * Generates the robots.txt file for search engine crawlers.
  * Allows all user agents to crawl the site except API routes.

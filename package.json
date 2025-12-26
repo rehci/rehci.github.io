@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "init-search": "tsx scripts/init-search.ts",
-    "generate-articles-json": "tsx scripts/generate-articles-json.ts"
+    "generate-articles-json": "tsx scripts/generate-articles-json.ts",
+    "build-and-test": "tsx scripts/build-and-test-static.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

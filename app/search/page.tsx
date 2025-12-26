@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ArticleCard from '@/components/ArticleCard';
 import SearchBar from '@/components/SearchBar';
@@ -22,13 +22,10 @@ interface ClientArticle {
 }
 
 /**
- * Search results page component (client-side).
- * Displays search bar and results grid based on query parameters.
- * Supports optional category and tag filters. Shows empty state when no query is provided.
- * 
- * This version works entirely client-side for static site deployment.
+ * Search results content component that uses search params.
+ * Wrapped in Suspense for static export compatibility.
  */
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
   const category = searchParams.get('category') || undefined;
@@ -128,5 +125,34 @@ export default function SearchPage() {
         </div>
       )}
     </div>
+  );
+}
+
+/**
+ * Search results page component (client-side).
+ * Displays search bar and results grid based on query parameters.
+ * Supports optional category and tag filters. Shows empty state when no query is provided.
+ * 
+ * This version works entirely client-side for static site deployment.
+ */
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            Search Articles
+          </h1>
+          <div className="max-w-2xl">
+            <SearchBar placeholder="Search for articles..." />
+          </div>
+        </div>
+        <div className="text-center py-16">
+          <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+        </div>
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
   );
 }

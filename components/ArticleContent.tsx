@@ -34,16 +34,18 @@ export default function ArticleContent({ content }: ArticleContentProps) {
         components={{
           img: ({ node, ...props }) => {
             // Handle images with Next.js Image component
-            if (props.src) {
+            // Ensure src is a string (not a Blob) for Next.js Image component
+            const src = typeof props.src === 'string' ? props.src : undefined;
+            if (src) {
               return (
                 <div className="my-8">
                   <Image
-                    src={props.src}
+                    src={src}
                     alt={props.alt || ''}
                     width={800}
                     height={600}
                     className="rounded-lg w-full h-auto"
-                    unoptimized={props.src?.startsWith('http')}
+                    unoptimized={src.startsWith('http')}
                   />
                 </div>
               );

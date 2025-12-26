@@ -1,6 +1,9 @@
 import { MetadataRoute } from 'next';
 import { getAllArticles, getAllCategories } from '@/lib/markdown';
 
+// Required for static export
+export const dynamic = 'force-static';
+
 /**
  * Generates the sitemap.xml for SEO purposes.
  * Creates sitemap entries for the home page, search page, all categories,

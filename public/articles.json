@@ -1,0 +1,49 @@
+[
+  {
+    "slug": "artificial-intelligence",
+    "title": "Artificial Intelligence",
+    "description": "An overview of artificial intelligence, its history, applications, and future prospects",
+    "category": "Technology",
+    "tags": [
+      "AI",
+      "machine-learning",
+      "technology",
+      "future"
+    ],
+    "date": "2024-01-20T00:00:00.000Z",
+    "author": "Tech Writer",
+    "image": "/images/ai.jpg",
+    "contentPreview": "\n# Artificial Intelligence\n\nArtificial Intelligence (AI) is one of the most transformative technologies of our time, revolutionizing industries and changing how we interact with machines.\n\n## What is Artificial Intelligence?\n\nArtificial Intelligence refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. The term may also be applied to any machine that exhibits traits associated with a human mind such as learning and problem-solving.\n\n## His"
+  },
+  {
+    "slug": "getting-started",
+    "title": "Getting Started with the Encyclopedia",
+    "description": "Learn how to use and contribute to this encyclopedia platform",
+    "category": "Guide",
+    "tags": [
+      "getting-started",
+      "guide",
+      "tutorial"
+    ],
+    "date": "2024-01-15T00:00:00.000Z",
+    "author": "Encyclopedia Team",
+    "image": "/images/getting-started.jpg",
+    "contentPreview": "\n# Getting Started with the Encyclopedia\n\nWelcome to the Encyclopedia! This platform allows you to explore knowledge across thousands of topics, search for information, and discover new insights.\n\n## Features\n\n### 🔍 Powerful Search\n\nOur search engine is powered by Meilisearch, providing fast and accurate results. Simply type your query in the search bar to find relevant articles.\n\n### 📚 Organized Categories\n\nArticles are organized into categories, making it easy to browse topics that interest "
+  },
+  {
+    "slug": "quantum-computing",
+    "title": "Quantum Computing",
+    "description": "Understanding quantum computing, its principles, and potential applications",
+    "category": "Technology",
+    "tags": [
+      "quantum",
+      "computing",
+      "physics",
+      "technology"
+    ],
+    "date": "2024-01-25T00:00:00.000Z",
+    "author": "Science Writer",
+    "image": "/images/quantum.jpg",
+    "contentPreview": "\n# Quantum Computing\n\nQuantum computing represents a paradigm shift in computation, leveraging the principles of quantum mechanics to process information in fundamentally new ways.\n\n## What is Quantum Computing?\n\nQuantum computing uses quantum mechanical phenomena such as superposition and entanglement to perform computations. Unlike classical computers that use bits (0 or 1), quantum computers use quantum bits or \"qubits\" that can exist in multiple states simultaneously.\n\n## Key Concepts\n\n### S"
+  }
+]
