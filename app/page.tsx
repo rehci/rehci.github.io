@@ -25,14 +25,14 @@ export default function Home() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Hero Section */}
-      <div className="text-center mb-16">
+      <div className="text-left mb-16">
         <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
-          Welcome to the Encyclopedia
+          Research Encyclopedia of <br /> Human-Computer Interaction
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-          Discover knowledge across thousands of topics. Search, explore, and learn.
+         
         </p>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl">
           <SearchBar />
         </div>
       </div>

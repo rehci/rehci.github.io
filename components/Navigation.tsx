@@ -48,7 +48,7 @@ export default function Navigation({ categories }: NavigationProps) {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center space-x-2">
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
-              Encyclopedia
+              rehci
             </span>
           </Link>
 
