@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { clientSearch } from '@/lib/client-search';
 
 /**
  * Represents a search result item.
@@ -18,6 +19,18 @@ interface SearchResult {
   title: string;
   description?: string;
   category?: string;
+}
+
+/**
+ * Represents a simplified article for client-side search.
+ */
+interface ClientArticle {
+  slug: string;
+  title: string;
+  description?: string;
+  category?: string;
+  tags?: string[];
+  contentPreview: string;
 }
 
 /**
@@ -56,9 +69,26 @@ export default function SearchBar({
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [articles, setArticles] = useState<ClientArticle[]>([]);
   const router = useRouter();
 
-  const performSearch = useCallback(async (searchQuery: string) => {
+  // Load articles JSON on mount
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        const response = await fetch('/articles.json');
+        if (response.ok) {
+          const data = await response.json();
+          setArticles(data);
+        }
+      } catch (error) {
+        console.error('Failed to load articles:', error);
+      }
+    };
+    loadArticles();
+  }, []);
+
+  const performSearch = useCallback((searchQuery: string) => {
     if (!searchQuery.trim()) {
       setResults([]);
       setShowResults(false);
@@ -66,28 +96,35 @@ export default function SearchBar({
     }
 
     setIsSearching(true);
+    
+    // Use client-side search
     try {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
-      if (response.ok) {
-        const data = await response.json();
-        setResults(data.results || []);
-        setShowResults(true);
-      }
+      const searchResults = clientSearch(articles, searchQuery);
+      const simplifiedResults: SearchResult[] = searchResults.slice(0, 10).map((article) => ({
+        slug: article.slug,
+        title: article.title,
+        description: article.description,
+        category: article.category,
+      }));
+      setResults(simplifiedResults);
+      setShowResults(true);
     } catch (error) {
       console.error('Search error:', error);
       setResults([]);
     } finally {
       setIsSearching(false);
     }
-  }, []);
+  }, [articles]);
 
   useEffect(() => {
+    if (articles.length === 0) return; // Wait for articles to load
+    
     const timeoutId = setTimeout(() => {
       performSearch(query);
     }, 300); // Debounce search
 
     return () => clearTimeout(timeoutId);
-  }, [query, performSearch]);
+  }, [query, performSearch, articles.length]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

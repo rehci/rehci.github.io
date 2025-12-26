@@ -1,42 +1,89 @@
-import { searchArticles } from '@/lib/search';
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import ArticleCard from '@/components/ArticleCard';
 import SearchBar from '@/components/SearchBar';
+import { clientSearch } from '@/lib/client-search';
 
 /**
- * Props for the search page component.
- *
- * @interface PageProps
- * @property {Promise<{ q?: string; category?: string; tags?: string }>} searchParams - URL search parameters
- * @property {string} [searchParams.q] - Search query string
- * @property {string} [searchParams.category] - Optional category filter
- * @property {string} [searchParams.tags] - Optional comma-separated tags filter
+ * Represents a simplified article for client-side use.
  */
-interface PageProps {
-  searchParams: Promise<{ q?: string; category?: string; tags?: string }>;
+interface ClientArticle {
+  slug: string;
+  title: string;
+  description?: string;
+  category?: string;
+  tags?: string[];
+  date?: string;
+  author?: string;
+  image?: string;
+  contentPreview: string;
 }
 
 /**
- * Search results page component.
+ * Search results page component (client-side).
  * Displays search bar and results grid based on query parameters.
  * Supports optional category and tag filters. Shows empty state when no query is provided.
- *
- * @param {PageProps} props - Component props
- * @param {Promise<{ q?: string; category?: string; tags?: string }>} props.searchParams - URL search parameters
- * @returns {Promise<JSX.Element>} Search page with results or empty state
+ * 
+ * This version works entirely client-side for static site deployment.
  */
-export default async function SearchPage({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const query = params.q || '';
-  const category = params.category;
-  const tags = params.tags?.split(',').filter(Boolean);
+export default function SearchPage() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get('q') || '';
+  const category = searchParams.get('category') || undefined;
+  const tags = searchParams.get('tags')?.split(',').filter(Boolean);
+  
+  const [articles, setArticles] = useState<ClientArticle[]>([]);
+  const [results, setResults] = useState<ClientArticle[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  let results: any[] = [];
-  if (query) {
-    results = await searchArticles(query, {
-      category,
-      tags,
-    });
-  }
+  // Load articles JSON on mount
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        const response = await fetch('/articles.json');
+        if (response.ok) {
+          const data = await response.json();
+          setArticles(data);
+        }
+      } catch (error) {
+        console.error('Failed to load articles:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadArticles();
+  }, []);
+
+  // Perform search when query or articles change
+  useEffect(() => {
+    if (articles.length === 0) return;
+    
+    if (query) {
+      const searchResults = clientSearch(articles, query, {
+        category,
+        tags,
+      });
+      setResults(searchResults);
+    } else {
+      setResults([]);
+    }
+  }, [query, category, tags, articles]);
+
+  // Convert client articles to full article format for ArticleCard
+  const fullArticles = results.map((article) => ({
+    slug: article.slug,
+    title: article.title,
+    description: article.description,
+    category: article.category,
+    tags: article.tags,
+    date: article.date,
+    author: article.author,
+    image: article.image,
+    content: article.contentPreview,
+    htmlContent: '',
+  }));
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -49,7 +96,13 @@ export default async function SearchPage({ searchParams }: PageProps) {
         </div>
       </div>
 
-      {query && (
+      {isLoading && (
+        <div className="text-center py-16">
+          <p className="text-gray-600 dark:text-gray-400">Loading articles...</p>
+        </div>
+      )}
+
+      {!isLoading && query && (
         <div className="mb-6">
           <p className="text-gray-600 dark:text-gray-400">
             {results.length > 0
@@ -59,15 +112,15 @@ export default async function SearchPage({ searchParams }: PageProps) {
         </div>
       )}
 
-      {results.length > 0 && (
+      {!isLoading && results.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {results.map((article) => (
+          {fullArticles.map((article) => (
             <ArticleCard key={article.slug} article={article} />
           ))}
         </div>
       )}
 
-      {!query && (
+      {!isLoading && !query && (
         <div className="text-center py-16">
           <p className="text-gray-600 dark:text-gray-400">
             Enter a search query to find articles
@@ -77,4 +130,3 @@ export default async function SearchPage({ searchParams }: PageProps) {
     </div>
   );
 }
-
