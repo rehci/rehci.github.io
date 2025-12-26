@@ -32,6 +32,24 @@ export default function ArticleContent({ content }: ArticleContentProps) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
+          h1: ({ node, ...props }) => (
+            <h1 className="markdown-h1" {...props} />
+          ),
+          h2: ({ node, ...props }) => (
+            <h2 className="markdown-h2" {...props} />
+          ),
+          h3: ({ node, ...props }) => (
+            <h3 className="markdown-h3" {...props} />
+          ),
+          h4: ({ node, ...props }) => (
+            <h4 className="markdown-h4" {...props} />
+          ),
+          h5: ({ node, ...props }) => (
+            <h5 className="markdown-h5" {...props} />
+          ),
+          h6: ({ node, ...props }) => (
+            <h6 className="markdown-h6" {...props} />
+          ),
           img: ({ node, ...props }) => {
             // Handle images with Next.js Image component
             // Ensure src is a string (not a Blob) for Next.js Image component
