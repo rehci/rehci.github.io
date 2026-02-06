@@ -1,19 +1,19 @@
 [
   {
-    "slug": "artificial-intelligence",
-    "title": "Artificial Intelligence",
-    "description": "An overview of artificial intelligence, its history, applications, and future prospects",
-    "category": "Technology",
+    "slug": "data-representation",
+    "title": "Data Representation in HCI",
+    "description": "How data is structured, visualized, and made actionable for people in interactive systems.",
+    "category": "HCI",
     "tags": [
-      "AI",
-      "machine-learning",
-      "technology",
-      "future"
+      "data-representation",
+      "visualization",
+      "modeling",
+      "hci"
     ],
-    "date": "2024-01-20T00:00:00.000Z",
-    "author": "Tech Writer",
-    "image": "/images/ai.jpg",
-    "contentPreview": "\n# Artificial Intelligence\n\nArtificial Intelligence (AI) is one of the most transformative technologies of our time, revolutionizing industries and changing how we interact with machines.\n\n## What is Artificial Intelligence?\n\nArtificial Intelligence refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. The term may also be applied to any machine that exhibits traits associated with a human mind such as learning and problem-solving.\n\n## His"
+    "date": "2026-02-06T00:00:00.000Z",
+    "author": "HCI Writer",
+    "image": "/images/hci-data-representation.jpg",
+    "contentPreview": "\n# Data Representation in HCI\n\nData representation is about how information is encoded, structured, and presented so people can understand it and act on it. In Human-Computer Interaction, representation is central: it shapes what users notice, what they can do, and what they believe is possible.\n\n## What is Data Representation?\n\nAt a basic level, data representation involves:\n\n- **Internal representations**: How data is stored inside a system (models, schemas, graphs, logs).  \n- **External repre"
   },
   {
     "slug": "getting-started",
@@ -31,19 +31,69 @@
     "contentPreview": "\n# Getting Started with the Encyclopedia\n\nWelcome to the Encyclopedia! This platform allows you to explore knowledge across thousands of topics, search for information, and discover new insights.\n\n## Features\n\n### 🔍 Powerful Search\n\nOur search engine is powered by Meilisearch, providing fast and accurate results. Simply type your query in the search bar to find relevant articles.\n\n### 📚 Organized Categories\n\nArticles are organized into categories, making it easy to browse topics that interest "
   },
   {
-    "slug": "quantum-computing",
-    "title": "Quantum Computing",
-    "description": "Understanding quantum computing, its principles, and potential applications",
-    "category": "Technology",
+    "slug": "music-information-retrieval",
+    "title": "Music Information Retrieval",
+    "description": "Techniques for analyzing, organizing, and interacting with music through computational methods.",
+    "category": "HCI",
     "tags": [
-      "quantum",
-      "computing",
-      "physics",
-      "technology"
+      "music-information-retrieval",
+      "mir",
+      "audio",
+      "hci",
+      "interaction"
     ],
-    "date": "2024-01-25T00:00:00.000Z",
-    "author": "Science Writer",
-    "image": "/images/quantum.jpg",
-    "contentPreview": "\n# Quantum Computing\n\nQuantum computing represents a paradigm shift in computation, leveraging the principles of quantum mechanics to process information in fundamentally new ways.\n\n## What is Quantum Computing?\n\nQuantum computing uses quantum mechanical phenomena such as superposition and entanglement to perform computations. Unlike classical computers that use bits (0 or 1), quantum computers use quantum bits or \"qubits\" that can exist in multiple states simultaneously.\n\n## Key Concepts\n\n### S"
+    "date": "2026-02-06T00:00:00.000Z",
+    "author": "HCI Writer",
+    "image": "/images/hci-music-information-retrieval.jpg",
+    "contentPreview": "\n# Music Information Retrieval\n\nMusic Information Retrieval (MIR) is a field that combines signal processing, machine learning, and HCI to help people search, analyze, and interact with music at scale. It focuses on extracting meaningful information from audio recordings and designing interfaces that make that information useful.\n\n## What is Music Information Retrieval?\n\nAt a high level, MIR involves:\n\n- **Representing audio** in forms that algorithms can process  \n- **Extracting features** such"
+  },
+  {
+    "slug": "physical-perception-augmentation",
+    "title": "Physical Perception Augmentation",
+    "description": "Extending human senses and bodily awareness through interactive technologies and interfaces.",
+    "category": "HCI",
+    "tags": [
+      "perception",
+      "augmentation",
+      "wearables",
+      "hci",
+      "embodiment"
+    ],
+    "date": "2026-02-06T00:00:00.000Z",
+    "author": "HCI Writer",
+    "image": "/images/hci-physical-perception-augmentation.jpg",
+    "contentPreview": "\n# Physical Perception Augmentation\n\nPhysical perception augmentation explores how interactive technologies can extend or reshape human sensory experience. In HCI, this often involves wearables, tangible interfaces, and feedback systems that add new channels of information or modify how existing senses work.\n\n## What is Perception Augmentation?\n\nPerception augmentation can include:\n\n- **Extending existing senses** (e.g., enhancing touch feedback or peripheral vision).  \n- **Adding new modalities"
+  },
+  {
+    "slug": "reification",
+    "title": "Reification in Human-Computer Interaction",
+    "description": "How abstract ideas become concrete interactive objects in interfaces and tools.",
+    "category": "HCI",
+    "tags": [
+      "reification",
+      "interaction-design",
+      "cognition",
+      "hci"
+    ],
+    "date": "2026-02-06T00:00:00.000Z",
+    "author": "HCI Writer",
+    "image": "/images/hci-reification.jpg",
+    "contentPreview": "\n# Reification in Human-Computer Interaction\n\nReification is the process of turning abstract concepts into concrete objects that people can see, manipulate, and reason about. In Human-Computer Interaction (HCI), reification is a powerful design strategy for making complex systems understandable and learnable.\n\n## What is Reification?\n\nIn everyday language, to reify something is to \"make it into a thing.\" In HCI, this means:\n\n- Turning **processes** into visible steps or stages  \n- Turning **data"
+  },
+  {
+    "slug": "visual-accessibility",
+    "title": "Visual Accessibility in Interfaces",
+    "description": "Designing visual interfaces that are perceivable, operable, and understandable for diverse users.",
+    "category": "HCI",
+    "tags": [
+      "accessibility",
+      "visual-accessibility",
+      "inclusive-design",
+      "hci"
+    ],
+    "date": "2026-02-06T00:00:00.000Z",
+    "author": "HCI Writer",
+    "image": "/images/hci-visual-accessibility.jpg",
+    "contentPreview": "\n# Visual Accessibility in Interfaces\n\nVisual accessibility ensures that people with diverse visual abilities can perceive and use digital interfaces. It is a core aspect of inclusive HCI, grounded in both ethical responsibility and practical benefits: accessible products reach more users and often become clearer for everyone.\n\n## Key Principles\n\nMany visual accessibility guidelines build on the WCAG principles:\n\n- **Perceivable**: Information must be presented in ways users can see or otherwise"
   }
 ]
